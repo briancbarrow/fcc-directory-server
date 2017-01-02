@@ -22,6 +22,16 @@ app.post('/post', function(req, res) {
   // conn.collection('profiles').insert(prof)
 })
 
+app.get('/profiles', function(req, res) {
+  Profile.find({}, function(err, data) {
+    if(err) {
+      res.send(err);
+    }
+    console.log(data)
+    res.json(data);
+  })
+})
+
 app.listen(process.env.PORT || port, function() {
   console.log('listening on fcc directory')
 })
