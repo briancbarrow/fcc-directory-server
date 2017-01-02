@@ -17,7 +17,9 @@ const conn = mongoose.connection
 app.post('/post', function(req, res) {
   console.log(req.body)
   const prof = new Profile(req.body)
-  conn.collection('profiles').insert(prof)
+  prof.save()
+    .then(console.log, console.log)
+  // conn.collection('profiles').insert(prof)
 })
 
 app.listen(process.env.PORT || port, function() {
