@@ -15,7 +15,7 @@ mongoose.connect(url)
 const conn = mongoose.connection
 
 app.post('/post', function(req, res) {
-  console.log("trying to post")
+  console.log(req.body)
   const prof = new Profile(req.body)
   conn.collection('profiles').insert(prof)
 })
