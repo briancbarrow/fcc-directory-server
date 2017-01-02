@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const Profile = require('./models/profiles')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 
 let app = express()
 app.use(bodyParser.urlencoded({ extended: true }));
