@@ -22,7 +22,7 @@ app.post('/post', function(req, res) {
   // conn.collection('profiles').insert(prof)
 })
 
-app.get('/profiles', function(req, res) {
+app.get('/profiles', cors(), function(req, res) {
   Profile.find({}, function(err, data) {
     if(err) {
       res.send(err);
