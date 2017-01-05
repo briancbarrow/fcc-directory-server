@@ -6,7 +6,7 @@ const ProfileSchema = new Schema({
   'name': String,
   'badges': Array,
   'image': String,
-  'visible': true,
+  'visible': Boolean,
   'uid': Number
 })
 
