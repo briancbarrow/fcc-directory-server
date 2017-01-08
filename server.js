@@ -18,8 +18,32 @@ app.post('/post', function(req, res) {
   const prof = new Profile(req.body)
   prof.save()
     .then(console.log, console.log)
-  // conn.collection('profiles').insert(prof)
 })
+
+app.put('/put', function(req, res) {
+  console.log(req.body.name)
+  // Snippet.findOneAndUpdate({name: name}, {content: content}, function(err, snippet) {
+  //   if (err || !snippet) {
+  //     console.error("Could not update snippet", name);
+  //     mongoose.disconnect();
+  //     return;
+  //   }
+  //   console.log("Updated snippet", snippet.name);
+  //   mongoose.disconnect();
+  // });
+})
+
+var update = function(name, content) {
+    Snippet.findOneAndUpdate({name: name}, {content: content}, function(err, snippet) {
+        if (err || !snippet) {
+            console.error("Could not update snippet", name);
+            mongoose.disconnect();
+            return;
+        }
+        console.log("Updated snippet", snippet.name);
+        mongoose.disconnect();
+    });
+};
 
 app.get('/profiles', cors(), function(req, res) {
   Profile.find({}, function(err, data) {
