@@ -12,7 +12,6 @@ app.use(cors());
 const port = 8080
 const url = process.env.PROD_MONGODB;
 mongoose.connect(url)
-const conn = mongoose.connection
 
 app.post('/post', function(req, res) {
   console.log(req.body)
