@@ -20,28 +20,28 @@ app.post('/post', function(req, res) {
     .then(console.log, console.log)
 })
 
-app.put('/put', cors(), function(req, res) {
+app.put('/put', function(req, res) {
   console.log(req.body)
-  Profile.findOneAndUpdate({"id": req.body.uid}, {"$set": {"name": "Erin Barrow"} }, function(err, snippet) {
-    if (err || !snippet) {
-      console.error("Could not update snippet", snippet);
+  Profile.findOneAndUpdate({"uid": req.body.uid}, {"$set": {"name": "New Name"} }, function(err, profile) {
+    if (err || !profile) {
+      console.error("Could not update profile", profile);
       return;
     }
-    console.log("Updated snippet", snippet.name);
+    console.log("Updated profile", profile);
   });
 })
 
-var update = function(name, content) {
-    Snippet.findOneAndUpdate({name: name}, {content: content}, function(err, snippet) {
-        if (err || !snippet) {
-            console.error("Could not update snippet", name);
-            mongoose.disconnect();
-            return;
-        }
-        console.log("Updated snippet", snippet.name);
-        mongoose.disconnect();
-    });
-};
+// var update = function(name, content) {
+//     Snippet.findOneAndUpdate({name: name}, {content: content}, function(err, snippet) {
+//         if (err || !snippet) {
+//             console.error("Could not update snippet", name);
+//             mongoose.disconnect();
+//             return;
+//         }
+//         console.log("Updated snippet", snippet.name);
+//         mongoose.disconnect();
+//     });
+// };
 
 app.get('/profiles', cors(), function(req, res) {
   Profile.find({}, function(err, data) {
