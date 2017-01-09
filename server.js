@@ -22,7 +22,7 @@ app.post('/post', function(req, res) {
 
 app.put('/put', cors(), function(req, res) {
   console.log(req.body)
-  Profile.select('name').findOneAndUpdate({id: req.body.uid}, {name: "Erin Barrow"}, function(err, snippet) {
+  Profile.findOneAndUpdate.select('name')({id: req.body.uid}, {name: "Erin Barrow"}, function(err, snippet) {
     if (err || !snippet) {
       console.error("Could not update snippet", snippet);
       return;
