@@ -24,7 +24,7 @@ app.put('/put', cors(), function(req, res) {
   console.log(req.body)
   Profile.findOneAndUpdate({id: req.body.uid}, {name: "Erin Barrow"}, function(err, snippet) {
     if (err || !snippet) {
-      console.error("Could not update snippet");
+      console.error("Could not update snippet", snippet);
       return;
     }
     console.log("Updated snippet", snippet.name);
