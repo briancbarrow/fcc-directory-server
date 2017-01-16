@@ -22,7 +22,7 @@ app.post('/post', function(req, res) {
 
 app.put('/put', function(req, res) {
   console.log(req.body)
-  Profile.findOneAndUpdate({"uid": req.body.uid}, {"$set": {"name": "New Name"} }, function(err, profile) {
+  Profile.findOneAndUpdate({"uid": req.body.uid}, req.body, function(err, profile) {
     if (err || !profile) {
       console.error("Could not update profile", profile);
       return;
